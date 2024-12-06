@@ -14,74 +14,74 @@ for (let currentRow = 0; currentRow < input.length; currentRow += 1) {
     for (let currentCol = 0; currentCol < input[0].length; currentCol += 1) {
         if (wordSearch.contents[currentRow][currentCol] === "X") {
             // Seek North
-            if (wordSearch.checkNorth(currentRow, currentCol) === "M") {
-                if (wordSearch.checkNorth(currentRow - 1, currentCol) === "A") {
-                    if (wordSearch.checkNorth(currentRow - 2, currentCol) === "S") {
+            if (wordSearch.check(currentRow, currentCol, "N") === "M") {
+                if (wordSearch.check(currentRow - 1, currentCol, "N") === "A") {
+                    if (wordSearch.check(currentRow - 2, currentCol, "N") === "S") {
                         XMASoccurences += 1
                     }
                 }
             }
             // Seek South
-            if (wordSearch.checkSouth(currentRow, currentCol) === "M") {
-                if (wordSearch.checkSouth(currentRow + 1, currentCol) === "A") {
-                    if (wordSearch.checkSouth(currentRow + 2, currentCol) === "S") {
+            if (wordSearch.check(currentRow, currentCol, "S") === "M") {
+                if (wordSearch.check(currentRow + 1, currentCol, "S") === "A") {
+                    if (wordSearch.check(currentRow + 2, currentCol, "S") === "S") {
                         XMASoccurences += 1
                     }
                 }
             }
             // Seek West
-            if (wordSearch.checkWest(currentRow, currentCol) === "M") {
-                if (wordSearch.checkWest(currentRow, currentCol - 1) === "A") {
-                    if (wordSearch.checkWest(currentRow, currentCol - 2) === "S") {
+            if (wordSearch.check(currentRow, currentCol, "W") === "M") {
+                if (wordSearch.check(currentRow, currentCol - 1, "W") === "A") {
+                    if (wordSearch.check(currentRow, currentCol - 2, "W") === "S") {
                         XMASoccurences += 1
                     }
                 }
             }
             // Seek East
-            if (wordSearch.checkEast(currentRow, currentCol) === "M") {
-                if (wordSearch.checkEast(currentRow, currentCol + 1) === "A") {
-                    if (wordSearch.checkEast(currentRow, currentCol + 2) === "S") {
+            if (wordSearch.check(currentRow, currentCol, "E") === "M") {
+                if (wordSearch.check(currentRow, currentCol + 1, "E") === "A") {
+                    if (wordSearch.check(currentRow, currentCol + 2, "E") === "S") {
                         XMASoccurences += 1
                     }
                 }
             }
             // Seek North-West
-            if (wordSearch.checkNorthWest(currentRow, currentCol) === "M") {
-                if (wordSearch.checkNorthWest(currentRow - 1, currentCol - 1) === "A") {
-                    if (wordSearch.checkNorthWest(currentRow - 2, currentCol - 2) === "S") {
+            if (wordSearch.check(currentRow, currentCol, "NW") === "M") {
+                if (wordSearch.check(currentRow - 1, currentCol - 1, "NW") === "A") {
+                    if (wordSearch.check(currentRow - 2, currentCol - 2, "NW") === "S") {
                         XMASoccurences += 1
                     }
                 }
             }
             // Seek North-East
-            if (wordSearch.checkNorthEast(currentRow, currentCol) === "M") {
-                if (wordSearch.checkNorthEast(currentRow - 1, currentCol + 1) === "A") {
-                    if (wordSearch.checkNorthEast(currentRow - 2, currentCol + 2) === "S") {
+            if (wordSearch.check(currentRow, currentCol, "NE") === "M") {
+                if (wordSearch.check(currentRow - 1, currentCol + 1, "NE") === "A") {
+                    if (wordSearch.check(currentRow - 2, currentCol + 2, "NE") === "S") {
                         XMASoccurences += 1
                     }
                 }
             }
             // Seek South-West
-            if (wordSearch.checkSouthWest(currentRow, currentCol) === "M") {
-                if (wordSearch.checkSouthWest(currentRow + 1, currentCol - 1) === "A") {
-                    if (wordSearch.checkSouthWest(currentRow + 2, currentCol - 2) === "S") {
+            if (wordSearch.check(currentRow, currentCol, "SW") === "M") {
+                if (wordSearch.check(currentRow + 1, currentCol - 1, "SW") === "A") {
+                    if (wordSearch.check(currentRow + 2, currentCol - 2, "SW") === "S") {
                         XMASoccurences += 1
                     }
                 }
             }
             // Seek South-East
-            if (wordSearch.checkSouthEast(currentRow, currentCol) === "M") {
-                if (wordSearch.checkSouthEast(currentRow + 1, currentCol + 1) === "A") {
-                    if (wordSearch.checkSouthEast(currentRow + 2, currentCol + 2) === "S") {
+            if (wordSearch.check(currentRow, currentCol, "SE") === "M") {
+                if (wordSearch.check(currentRow + 1, currentCol + 1, "SE") === "A") {
+                    if (wordSearch.check(currentRow + 2, currentCol + 2, "SE") === "S") {
                         XMASoccurences += 1
                     }
                 }
             }
         } else if (wordSearch.contents[currentRow][currentCol] === "A") {
-            let northWest = wordSearch.checkNorthWest(currentRow, currentCol)
-            let northEast = wordSearch.checkNorthEast(currentRow, currentCol)
-            let southWest = wordSearch.checkSouthWest(currentRow, currentCol)
-            let southEast = wordSearch.checkSouthEast(currentRow, currentCol)
+            let northWest = wordSearch.check(currentRow, currentCol, "NW")
+            let northEast = wordSearch.check(currentRow, currentCol, "NE")
+            let southWest = wordSearch.check(currentRow, currentCol, "SW")
+            let southEast = wordSearch.check(currentRow, currentCol, "SE")
             if ((northWest === "M" && southEast === "S") || (northWest === "S" && southEast === "M")) {
                 if ((northEast === "M" && southWest === "S") || (northEast === "S" && southWest === "M")) {
                     X_MASoccurrences += 1

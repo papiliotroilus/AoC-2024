@@ -8,60 +8,42 @@ class Map2D {
         }
     }
 
-    // Check North
-    checkNorth(row, col) {
-        if (row !== 0)  {
+    // Find
+    find(target, all = false) {
+        let hits = []
+        for (let i = 0; i < this.contents.length; i++) {
+            for (let j = 0; j < this.contents[i].length; j++) {
+                if (this.contents[i][j] === target) {
+                    hits.push([i, j])
+                    if (!all) {
+                        return hits
+                    }
+                }
+            }
+        }
+        return hits
+    }
+
+    // Check
+    check(row, col, neighbour = "X") {
+        if (neighbour === "X" && row >= 0 && row < this.contents.length && col >= 0 && col < this.contents[row].length) {
+            return this.contents[row][col]
+        } else if (neighbour === "N" && row !== 0)  {
             return this.contents[row - 1][col]
-        }
-    }
-
-    // Check South
-    checkSouth(row, col) {
-        if (row !== this.contents.length - 1)  {
+        } else if (neighbour === "S" && row !== this.contents.length - 1)  {
             return this.contents[row + 1][col]
-        }
-    }
-
-    // Check West
-    checkWest(row, col) {
-        if (col !== 0)  {
+        } else if (neighbour === "W" && col !== 0)  {
             return this.contents[row][col - 1]
-        }
-    }
-
-    // Check East
-    checkEast(row, col) {
-        if (col !== this.contents[0].length - 1)  {
+        } else if (neighbour === "E" && col !== this.contents.length - 1)  {
             return this.contents[row][col + 1]
-        }
-    }
-
-    // Check North-West
-    checkNorthWest(row, col) {
-        if (row !== 0 && col !== 0) {
+        } else if (neighbour === "NW" && row !== 0 && col !== 0) {
             return this.contents[row - 1][col - 1]
-        }
-    }
-
-    // Check North-East
-    checkNorthEast(row, col) {
-        if (row !== 0 && col !== this.contents[0].length - 1) {
+        } else if (neighbour === "NE" && row !== 0 && col !== this.contents[0].length - 1) {
             return this.contents[row - 1][col + 1]
-        }
-    }
-
-    // Check South-West
-    checkSouthWest(row, col) {
-        if (row !== this.contents.length - 1 && col !== 0) {
+        } else if (neighbour === "SW" && row !== this.contents.length - 1 && col !== 0) {
             return this.contents[row + 1][col - 1]
-        }
-    }
-
-    // Check South-East
-    checkSouthEast(row, col) {
-        if (row !== this.contents.length - 1 && col !== this.contents[0].length - 1) {
-            let toReturn = this.contents[row + 1][col + 1]
-            return toReturn
+        } else if (neighbour === "SE" && row !== this.contents.length - 1 && col !== this.contents[0].length - 1) {
+            return this.contents[row + 1][col + 1]
         }
     }
 }
