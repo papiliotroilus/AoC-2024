@@ -16,17 +16,17 @@ Map2D.prototype.patrol = function(guardPos, guardOri) {
     let newOri = guardOri
     let newPos = guardPos
     let nextTile = this.check(guardPos[0], guardPos[1], guardOri)
-    if (nextTile === "." || nextTile === "^") {
+    if (nextTile === undefined) {
+        newPos = undefined
+    } else if (nextTile === "#") {
+        newOri = orientations[(orientations.indexOf(guardOri) + 1) % orientations.length]
+    } else {
         switch (guardOri) {
             case "N": newPos = [guardPos[0] - 1, guardPos[1]]; break;
             case "E": newPos = [guardPos[0], guardPos[1] + 1]; break;
             case "S": newPos = [guardPos[0] + 1, guardPos[1]]; break;
             case "W": newPos = [guardPos[0], guardPos[1] - 1]; break
         }
-    } else if (nextTile === "#") {
-        newOri = orientations[(orientations.indexOf(guardOri) + 1) % orientations.length]
-    } else {
-        newPos = undefined
     }
     return [newPos, newOri]
 }
@@ -45,27 +45,23 @@ for (let tile of part1path) {
     let i = tileCoords[0]
     let j = tileCoords[1]
     if (guardMap.contents[i][j] === ".") {
-        guardMap.contents[i][j] = "#"
+        let testMap = new Map2D(input)
+        testMap.contents[i][j] = "#"
         let guardPos = originalGuardPos
         let guardOri = "N"
-        const part2path = new Set()
-        let initialSize = 0
         while (guardPos) {
-            part2path.add(guardPos.toString().concat(" ", guardOri.toString()))
-            let patrolRes = guardMap.patrol(guardPos, guardOri)
+            if (testMap.contents[guardPos[0]][guardPos[1]] === guardOri) {
+                loopsFound += 1
+                break
+            } else if (testMap.contents[guardPos[0]][guardPos[1]] === "." || testMap.contents[guardPos[0]][guardPos[1]] === "^") {
+                testMap.contents[guardPos[0]][guardPos[1]] = guardOri
+            }
+            let patrolRes = testMap.patrol(guardPos, guardOri)
             guardPos = patrolRes[0]
             guardOri = patrolRes[1]
-            let newSize = part2path.size
-            if (initialSize === newSize) {
-                loopsFound += 1
-                guardPos = undefined
-            }
-            initialSize = part2path.size
         }
-        guardMap.contents[i][j] = "."
     }
 }
-
 
 // Output
 console.log("The solution to part 1 is ", part1path.size)
