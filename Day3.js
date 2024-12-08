@@ -1,9 +1,7 @@
 // Input
 import * as fs from "node:fs";
 let input = fs.readFileSync("Input/Day3.txt", 'utf8')
-input = input.split(/\r\n|\n/)
-input.pop()
-input = input.toString()
+input = input.trimEnd().split(/\r\n|\n/).toString()
 
 // Solver
 let part1sum = 0
@@ -22,5 +20,5 @@ for (let i = 0; i < operations.length; i++) {
 
 
 // Output
-console.log("The solution to part 1 is ", part1sum)
-console.log("The solution to part 2 is ", part2sum)
+console.log("The solution to part 1 is", part1sum)
+console.log("The solution to part 2 is", part2sum)

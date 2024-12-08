@@ -1,8 +1,7 @@
 // Input
 import * as fs from "node:fs";
 let input = fs.readFileSync("Input/Day2.txt", 'utf8')
-input = input.split(/\r\n|\n/)
-input.pop()
+input = input.trimEnd().split(/\r\n|\n/)
 
 // Solver
 // Report evaluator
@@ -47,5 +46,5 @@ for (let i = 0; i < input.length; i++) {
 }
 
 // Output
-console.log("The solution to part 1 is ",safeReportTotal)
-console.log("The solution to part 2 is ",almostSafeReportTotal)
+console.log("The solution to part 1 is",safeReportTotal)
+console.log("The solution to part 2 is",almostSafeReportTotal)

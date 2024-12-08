@@ -20,7 +20,6 @@ for (let line of input) {
             }
             return partialValue * numbers[index] === testValue || partialValue + numbers[index] === testValue
         }
-
         if (partialValue * numbers[index] <= testValue) {
             if (DFS(testValue, partialValue * numbers[index], index + 1, concatOn) === true) {
                 return true
@@ -48,5 +47,5 @@ for (let line of input) {
 }
 
 // Output
-console.log("The solution to part 1 is ", totalCalibrationPart1)
-console.log("The solution to part 2 is ", totalCalibrationPart2)
+console.log("The solution to part 1 is", totalCalibrationPart1)
+console.log("The solution to part 2 is", totalCalibrationPart2)

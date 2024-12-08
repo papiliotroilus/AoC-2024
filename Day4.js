@@ -2,8 +2,7 @@
 import Map2D from "./Helpers/Map2D.js";
 import * as fs from "node:fs";
 let input = fs.readFileSync("Input/Day4.txt", 'utf8')
-input = input.split(/\r\n|\n/)
-input.pop()
+input = input.trimEnd().split(/\r\n|\n/)
 
 // Solver
 
@@ -92,5 +91,5 @@ for (let currentRow = 0; currentRow < input.length; currentRow += 1) {
 }
 
 // Output
-console.log("The solution to part 1 is ", XMASoccurences)
-console.log("The solution to part 2 is ", X_MASoccurrences)
+console.log("The solution to part 1 is", XMASoccurences)
+console.log("The solution to part 2 is", X_MASoccurrences)

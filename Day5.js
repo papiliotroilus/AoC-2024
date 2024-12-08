@@ -1,10 +1,9 @@
 // Input
 import * as fs from "node:fs";
 let input = fs.readFileSync("Input/Day5.txt", 'utf8')
-input = input.split(/\r\n\r\n|\n\n/)
+input = input.trimEnd().split(/\r\n\r\n|\n\n/)
 let rules = input[0].split(/\r\n|\n/)
 let updates = input[1].split(/\r\n|\n/)
-updates.pop()
 
 // Solver
 const ruleMap = new Map()
@@ -38,5 +37,5 @@ for (let update of updates) {
 }
 
 // Output
-console.log("The solution to part 1 is ", correctlySorted)
-console.log("The solution to part 2 is ", incorrectlySorted)
+console.log("The solution to part 1 is", correctlySorted)
+console.log("The solution to part 2 is", incorrectlySorted)

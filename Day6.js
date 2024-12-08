@@ -2,8 +2,7 @@
 import Map2D from "./Helpers/Map2D.js";
 import * as fs from "node:fs";
 let input = fs.readFileSync("Input/Day6.txt", 'utf8')
-input = input.split(/\r\n|\n/)
-input.pop()
+input = input.trimEnd().split(/\r\n|\n/)
 
 // Solver
 const guardMap = new Map2D(input);
@@ -64,5 +63,5 @@ for (let tile of part1path) {
 }
 
 // Output
-console.log("The solution to part 1 is ", part1path.size)
-console.log("The solution to part 2 is ", loopsFound)
+console.log("The solution to part 1 is", part1path.size)
+console.log("The solution to part 2 is", loopsFound)

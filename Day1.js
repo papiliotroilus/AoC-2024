@@ -1,8 +1,7 @@
 // Input
 import * as fs from "node:fs";
 let input = fs.readFileSync("Input/Day1.txt", 'utf8')
-input = input.split(/ {3}|\n/)
-input.pop()
+input = input.trimEnd().split(/ {3}|\n/)
 
 // Solver
 // Build lists
@@ -37,5 +36,5 @@ for (let j = 0; j < list2.length; j++) {
 }
 
 // Output
-console.log("The solution to part 1 is ",totalDistance)
-console.log("The solution to part 2 is ",totalSimilarity)
+console.log("The solution to part 1 is",totalDistance)
+console.log("The solution to part 2 is",totalSimilarity)
