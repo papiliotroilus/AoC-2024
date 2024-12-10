@@ -1,6 +1,6 @@
 // Input
-import Map2D from "./Helpers/Map2D.js";
-import * as fs from "node:fs";
+import Map2D from "./Helpers/Map2D.js"
+import * as fs from "node:fs"
 let input = fs.readFileSync("Input/Day6.txt", 'utf8')
 input = input.trimEnd().split(/\r\n|\n/)
 

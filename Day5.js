@@ -1,5 +1,5 @@
 // Input
-import * as fs from "node:fs";
+import * as fs from "node:fs"
 let input = fs.readFileSync("Input/Day5.txt", 'utf8')
 input = input.trimEnd().split(/\r\n\r\n|\n\n/)
 let rules = input[0].split(/\r\n|\n/)

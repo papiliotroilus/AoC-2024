@@ -1,10 +1,14 @@
 // Converter
 class Map2D {
     // Constructor
-    constructor(input) {
+    constructor(input, numbers = false) {
         this.contents = []
         for (let i = 0; i < input.length; i++) {
-            this.contents.push(input[i].split(""))
+            if (numbers) {
+                this.contents.push(input[i].split("").map(Number))
+            } else {
+                this.contents.push(input[i].split(""))
+            }
         }
     }
 

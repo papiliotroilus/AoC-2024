@@ -1,5 +1,5 @@
 // Input
-import * as fs from "node:fs";
+import * as fs from "node:fs"
 let input = fs.readFileSync("Input/Day9.txt", 'utf8')
 input = input.trimEnd().split("").map(Number)
 
