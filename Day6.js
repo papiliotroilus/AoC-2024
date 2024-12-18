@@ -6,7 +6,7 @@ input = input.trimEnd().split(/\r\n|\n/)
 
 // Solver
 const guardMap = new Map2D(input);
-const originalGuardPos = guardMap.find("^")[0]
+const originalGuardPos = guardMap.find("^")
 let guardPos = originalGuardPos
 let guardOri = "N"
 // Patrol method

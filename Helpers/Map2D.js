@@ -12,16 +12,23 @@ class Map2D {
         }
     }
 
+    // Printer
+    print() {
+        for (let row of this.contents) {
+            console.log(row.join(""))
+        }
+    }
+
     // Find
     find(target, all = false) {
         let hits = []
         for (let i = 0; i < this.contents.length; i++) {
             for (let j = 0; j < this.contents[i].length; j++) {
                 if (this.contents[i][j] === target) {
-                    hits.push([i, j])
                     if (!all) {
-                        return hits
+                        return [i, j]
                     }
+                    hits.push([i, j])
                 }
             }
         }
@@ -48,6 +55,27 @@ class Map2D {
             return this.contents[row + 1][col - 1]
         } else if (neighbour === "SE" && row !== this.contents.length - 1 && col !== this.contents[0].length - 1) {
             return this.contents[row + 1][col + 1]
+        }
+    }
+
+    // Get neighbour coordinates
+    neighbour(row, col, neighbour) {
+        if (neighbour === "N" && row !== 0)  {
+            return [row - 1, col]
+        } else if (neighbour === "S" && row !== this.contents.length - 1)  {
+            return [row + 1, col]
+        } else if (neighbour === "W" && col !== 0)  {
+            return [row, col - 1]
+        } else if (neighbour === "E" && col !== this.contents.length[0] - 1)  {
+            return [row, col + 1]
+        } else if (neighbour === "NW" && row !== 0 && col !== 0) {
+            return [row - 1, col - 1]
+        } else if (neighbour === "NE" && row !== 0 && col !== this.contents[0].length - 1) {
+            return [row - 1, col + 1]
+        } else if (neighbour === "SW" && row !== this.contents.length - 1 && col !== 0) {
+            return [row + 1, col - 1]
+        } else if (neighbour === "SE" && row !== this.contents.length - 1 && col !== this.contents[0].length - 1) {
+            return [row + 1, col + 1]
         }
     }
 }
