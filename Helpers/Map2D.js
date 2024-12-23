@@ -3,11 +3,21 @@ class Map2D {
     // Constructor
     constructor(input, numbers = false) {
         this.contents = []
-        for (let i = 0; i < input.length; i++) {
-            if (numbers) {
-                this.contents.push(input[i].split("").map(Number))
-            } else {
-                this.contents.push(input[i].split(""))
+        if (typeof input === "number") {
+            for (let row = 0; row <= input; row++) {
+                let emptyRow = []
+                for (let col = 0; col <= input; col++) {
+                    emptyRow.push(".")
+                }
+                this.contents.push(emptyRow)
+            }
+        } else {
+            for (let i = 0; i < input.length; i++) {
+                if (numbers) {
+                    this.contents.push(input[i].split("").map(Number))
+                } else {
+                    this.contents.push(input[i].split(""))
+                }
             }
         }
     }
@@ -66,7 +76,7 @@ class Map2D {
             return [row + 1, col]
         } else if (neighbour === "W" && col !== 0)  {
             return [row, col - 1]
-        } else if (neighbour === "E" && col !== this.contents.length[0] - 1)  {
+        } else if (neighbour === "E" && col !== this.contents[0].length - 1)  {
             return [row, col + 1]
         } else if (neighbour === "NW" && row !== 0 && col !== 0) {
             return [row - 1, col - 1]
@@ -76,6 +86,8 @@ class Map2D {
             return [row + 1, col - 1]
         } else if (neighbour === "SE" && row !== this.contents.length - 1 && col !== this.contents[0].length - 1) {
             return [row + 1, col + 1]
+        } else {
+            return undefined
         }
     }
 }
